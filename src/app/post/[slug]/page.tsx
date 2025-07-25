@@ -22,7 +22,7 @@ const Page = () => {
             }
         }
         getItem(slug)
-    }, [])
+    }, [slug])
     return (
         <div>
             <div className="pt-20 pb-10 flex flex-col justify-center">

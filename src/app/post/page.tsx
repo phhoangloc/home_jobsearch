@@ -71,6 +71,7 @@ const Page = () => {
 
     const toPage = useRouter()
     return (
+
         <div className='bg-search-bg p-10'>
             <SearchTool />
 

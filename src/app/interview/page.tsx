@@ -33,6 +33,7 @@ const Page = () => {
     const toPage = useRouter()
 
     return (
+
         <div className='p-10 bg-facility-bg'>
             <div className='mx-auto mb-4 max-w-(--xl) text-white'>
                 <h2 className='text-2xl font-bold text-pinkTXT'>Interview</h2>

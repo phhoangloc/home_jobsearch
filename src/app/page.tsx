@@ -4,7 +4,7 @@ import Image from "next/image"
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { useRouter } from "next/navigation";
 import SearchTool from "@/components/searchTool";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ApiItem } from "@/api/client";
 import { PostType } from "./search/page";
 import CloseIcon from '@mui/icons-material/Close';

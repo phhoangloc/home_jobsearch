@@ -71,9 +71,9 @@ const Page = () => {
 
     const toPage = useRouter()
     return (
+
         <div className='bg-search-bg p-10'>
             <SearchTool />
-
             <div className='mx-auto mb-4 max-w-(--xl) text-white'>
                 <h2 className='text-2xl font-bold'>Job Information</h2>
                 <div className="h-1"></div>
@@ -118,6 +118,7 @@ const Page = () => {
                     </div>}
             </div>
         </div>
+
     )
 }
 

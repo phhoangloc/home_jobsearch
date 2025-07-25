@@ -21,15 +21,6 @@ const Page = () => {
         getItem(slug)
     }, [slug])
 
-    const formatPostNo = (input: string) => {
-        if (input) {
-            const digits = input.replace(/\D/g, '');
-
-            if (digits.length === 7) {
-                return digits.replace(/(\d{3})(\d{4})/, '$1-$2');
-            }
-        }
-    }
     console.log(_post)
     return (
         <div className='p-10'>
