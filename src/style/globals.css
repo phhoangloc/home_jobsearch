@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --color-page-bg: #fffdd6;
+  --color-header-bg: #ffffff;
+  --color-blueTXT: #53b5e1;
+  --color-pinkTXT: #ee827d;
+  --color-titleTXT: #133b3a;
+  --color-search-bg: #53b5e1;
+  --color-facility-bg: #fdefcd;
+  --breakpoint-xs: 375px;
+  --xs: 375px;
+  --breakpoint-sm: 575px;
+  --sm: 575px;
+  --breakpoint-md: 768px;
+  --md: 768px;
+  --breakpoint-lg: 992px;
+  --lg: 992px;
+  --breakpoint-xsl: 1200px;
+  --xl: 1200px;
+  --breakpoint-xxl: 1600px;
+  --xxl: 1600px;
+}
+
+.dangerousBox img {
+  width: 100%;
+}
+
+.dangerousBox iframe {
+  width: 100%;
+}
+
+.dangerousBox a {
+  text-decoration: underline;
+}
+
+.dangerousBox h1 {
+  font-size: 1.5rem;
+  margin-top: 24px;
+  line-height: 1.75;
+  font-weight: 900;
+}
+
+.dangerousBox h2 {
+  font-size: 1.25rem;
+  margin-top: 20px;
+  line-height: 1.75;
+  font-weight: 900;
+}
+
+.dangerousBox h3 {
+  font-size: 1.125rem;
+  margin-top: 16px;
+  line-height: 1.75;
+  font-weight: 700;
+}
+
+.dangerousBox h4 {
+  font-size: 1rem;
+  margin-top: 12px;
+  line-height: 1.75;
+}
+
+
+.dangerousBox p,
+.dangerousBox div,
+.dangerousBox li {
+  line-height: 1.75;
+}
+
+.dangerousBox figure img {
+  width: 100%;
+}
+
+.dangerousBox figure em {
+  opacity: 0.75;
+  font-size: 0.9rem;
+}
+
+.dangerousBox ul {
+  padding-left: 20px;
+}
+
+.dangerousBox ul li {
+  list-style: disc;
+}
