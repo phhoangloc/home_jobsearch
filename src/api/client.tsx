@@ -51,7 +51,8 @@ export const ApiItem = async ({ archive, search, id, slug, category, sort, skip,
             "&workplace=" + `${workplace ? workplace : ""}` +
             "&workstatus=" + `${workstatus ? workstatus : ""}` +
             "&worktype=" + `${worktype ? worktype : ""}` +
-            "&license=" + `${license ? license : ""}`
+            "&license=" + `${license ? license : ""}` +
+            "&draft=0"
         )
         return result.data
     } catch (error) {
