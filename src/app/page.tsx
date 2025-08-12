@@ -115,24 +115,24 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="text-center w-full h-screen flex flex-col justify-center text-5xl md:text-6xl lg:text-7xl text-white font-bold sticky top-0 leading-[1.5] ">
+          <div className="text-center w-full h-max flex flex-col justify-center text-5xl md:text-6xl lg:text-7xl text-white font-bold sticky top-[50vh] leading-[1.5] ">
             <h2 style={{ textShadow: "1px 1px 3px #444" }}>手話を活かして
               <br></br>働くということ。
             </h2>
           </div>
-
-          <div className="h-screen flex flex-col justify-end max-w-[1200px] m-auto">
-            <p className="text-center text-lg">
-              手話を通じてコミュニケーションの架け橋となる仲間を探しています。
-              <br></br>
-              あなたの手話スキルを活かし、誰もが理解し合える環境づくりに貢献しませんか?
-            </p>
-            <div className="relative z-[1] flex my-10 m-auto w-full max-w-[768px]">
-              <ButtonWeb name="業界を知る" bg="#F6CA1C" color="#594a36" icon={<KeyboardArrowRightIcon style={{ width: "40px", height: "40px", padding: "5px", boxSizing: "border-box" }} />} onClick={() => toPage.push("/#j")} />
-              <ButtonWeb name="仕事を探す" bg="#53B5E1" color="white" icon={<KeyboardArrowRightIcon style={{ width: "40px", height: "40px", padding: "5px", boxSizing: "border-box", color: "white" }} />} onClick={() => toPage.push("/#i")} />
-            </div>
-            <div className="h-36"></div>
+          <div className="h-[150vh] max-h-[1100px]"></div>
+        </div>
+        <div className="h-max flex flex-col justify-end max-w-[1200px] m-auto">
+          <p className="text-center text-lg">
+            手話を通じてコミュニケーションの架け橋となる仲間を探しています。
+            <br></br>
+            あなたの手話スキルを活かし、誰もが理解し合える環境づくりに貢献しませんか?
+          </p>
+          <div className="relative z-[1] flex my-10 m-auto w-full max-w-[768px]">
+            <ButtonWeb name="業界を知る" bg="#F6CA1C" color="#594a36" icon={<KeyboardArrowRightIcon style={{ width: "40px", height: "40px", padding: "5px", boxSizing: "border-box" }} />} onClick={() => toPage.push("/#j")} />
+            <ButtonWeb name="仕事を探す" bg="#53B5E1" color="white" icon={<KeyboardArrowRightIcon style={{ width: "40px", height: "40px", padding: "5px", boxSizing: "border-box", color: "white" }} />} onClick={() => toPage.push("/#i")} />
           </div>
+          <div className="h-36"></div>
         </div>
       </div>
       <div className=" bg-search-bg p-10" id="i">
