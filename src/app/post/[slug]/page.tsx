@@ -7,6 +7,7 @@ import { PostType } from '../page'
 import Image from 'next/image'
 import { jpyFormatter } from '@/lib/currency'
 import moment from 'moment'
+import Link from 'next/link'
 const Page = () => {
     const param = useParams<{ slug: string }>()
     const slug = param.slug
@@ -55,7 +56,7 @@ const Page = () => {
                 <div className="h-12"></div>
                 <div className='bg-sky-800 w-max text-white py-1 px-4 rounded-t-xl ml-2'> <p>詳細</p></div>
                 <div className='border border-sky-800 rounded p-2 md:p-8 lg:p-12 leading-7 dangerousBox' dangerouslySetInnerHTML={{ __html: _post?.content || "" }} />
-                <div className='w-max px-8 py-2 bg-sky-800 rounded-lg mx-auto mt-8 text-white' ><a href={`mailto:${_post?.contract}?subject=仕事に応募します。&body=この仕事を応募したいです。よろしくお願いいたします。`}>応募はこちらから</a></div>
+                <div className='w-max px-8 py-2 bg-sky-800 rounded-lg mx-auto mt-8 text-white' ><Link href={`mailto:${_post?.contract}?subject=お名前・ご連絡先・お問い合わせの内容をお書きください`}>応募はこちらから</Link></div>
 
             </div>
         </div>

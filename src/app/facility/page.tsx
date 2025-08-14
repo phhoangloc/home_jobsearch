@@ -10,7 +10,7 @@ const Page = () => {
 
     const searchParam = useSearchParams()
     const area = searchParam.get("area") || ""
-    const location = searchParam.get("lo") || ""
+    const location = searchParam.get("location") || ""
     const page = searchParam.get("page") || 0
     const pageNo = Number(page)
 

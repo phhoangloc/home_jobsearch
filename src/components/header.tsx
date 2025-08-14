@@ -22,7 +22,7 @@ const Header = () => {
                         <CloseIcon className='absolute top-1 right-1 cursor-pointer ' onClick={() => set_menu(false)} />
                         <p className='text-center text-blueTXT text-lg py-1 hover:font-bold cursor-pointer' onClick={() => toPage.push("/")} >ホーム </p>
                         <p className='text-center text-blueTXT text-lg py-1 hover:font-bold cursor-pointer' onClick={() => toPage.push("/search?location=&wt=&wstt=&license=&workplace=")} >仕事を探す </p>
-                        <p className='text-center text-blueTXT text-lg py-1 hover:font-bold cursor-pointer' onClick={() => toPage.push("/facility")}>施設一覧</p>
+                        <p className='text-center text-blueTXT text-lg py-1 hover:font-bold cursor-pointer' onClick={() => toPage.push("/facility")}>働く場 一覧</p>
                         <p className='text-center text-blueTXT text-lg py-1 hover:font-bold cursor-pointer' onClick={() => toPage.push("/news")}>ニュース</p>
                         <p className='text-center text-blueTXT text-lg py-1 hover:font-bold cursor-pointer' onClick={() => toPage.push("/contact")}>お問い合わせ</p>
                     </div>
@@ -30,7 +30,7 @@ const Header = () => {
                         <CloseIcon className='absolute top-1 right-1 cursor-pointer lg:!hidden ' onClick={() => set_menu(false)} />
                         <p className='text-center text-blueTXT font-bold cursor-pointer w-[125px] hover:text-sky-600' onClick={() => toPage.push("/")} >ホーム </p>
                         <p className='text-center text-blueTXT font-bold cursor-pointer w-[125px] hover:text-sky-600' onClick={() => toPage.push("/search?location=&wt=&wstt=&license=&workplace=")} >仕事を探す </p>
-                        <p className='text-center text-blueTXT font-bold cursor-pointer w-[125px] hover:text-sky-600' onClick={() => toPage.push("/facility")}>施設一覧</p>
+                        <p className='text-center text-blueTXT font-bold cursor-pointer w-[125px] hover:text-sky-600' onClick={() => toPage.push("/facility")}>働く場 一覧</p>
                         <p className='text-center text-blueTXT font-bold cursor-pointer w-[125px] hover:text-sky-600' onClick={() => toPage.push("/news")}>ニュース</p>
                         <p className='text-center text-blueTXT font-bold cursor-pointer w-[125px] hover:text-sky-600' onClick={() => toPage.push("/contact")}>お問い合わせ</p>
                     </div>

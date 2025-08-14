@@ -17,6 +17,7 @@ export type BodyType = {
     workplace?: string,
     workstatus?: string,
     license?: string,
+    tag?: string,
 
 }
 
@@ -35,7 +36,7 @@ export const ApiSignup = async (body: { username: string, password: string, emai
     })
     return result.data
 }
-export const ApiItem = async ({ archive, search, id, slug, category, sort, skip, limit, area, location, worktype, workplace, workstatus, license }: BodyType) => {
+export const ApiItem = async ({ archive, search, id, slug, category, sort, skip, limit, area, location, worktype, workplace, workstatus, license, tag }: BodyType) => {
     try {
         const result = await axios.get(process.env.api_url + "api/" +
             archive +
@@ -52,6 +53,7 @@ export const ApiItem = async ({ archive, search, id, slug, category, sort, skip,
             "&workstatus=" + `${workstatus ? workstatus : ""}` +
             "&worktype=" + `${worktype ? worktype : ""}` +
             "&license=" + `${license ? license : ""}` +
+            "&tag=" + `${tag ? tag : ""}` +
             "&draft=0"
         )
         return result.data

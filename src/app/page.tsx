@@ -52,14 +52,9 @@ export default function Home() {
   const [_news, set_news] = useState<NewsType>()
   useEffect(() => {
     const getTag = async () => {
-      const result = await ApiItem({ archive: "post" })
+      const result = await ApiItem({ archive: "tag", limit: 20 })
       if (result.success) {
-        const posts = result.data
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const tagArr = posts.map((p: any) => p.tag.split(","))
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const newTagArr: any[] = [... new Set(tagArr.flat())]
-        set_tag(newTagArr)
+        set_tag(result.data.map((t: { name: string }) => t.name))
       }
     }
     getTag()
@@ -92,7 +87,6 @@ export default function Home() {
   useEffect(() => {
     const getNews = async () => {
       const result = await ApiItem({ archive: "news", limit: 1 })
-      console.log(result)
       if (result.success) {
         const posts = result.data[0]
         set_news(posts)
@@ -138,7 +132,7 @@ export default function Home() {
       <div className=" bg-search-bg p-10" id="i">
         <SearchTool />
         <div className="flex gap-2 w-full max-w-(--xl) mx-auto my-12">
-          {_tag.map((t, index) => <div onClick={() => toPage.push("/search?tag=" + t)} className="h-6 flex flex-col justify-center p-4 rounded-[18px] bg-white" key={index}>{t}</div>)}
+          {_tag.map((t, index) => <div onClick={() => toPage.push("/search?tag=" + t)} className="h-6 flex flex-col justify-center p-4 rounded-[18px] bg-white cursor-pointer" key={index}>{t}</div>)}
         </div>
         <div className='mx-auto mb-4 max-w-(--xl) text-white'>
           <h2 className='text-2xl font-bold'>Job Information Pickup</h2>
@@ -206,11 +200,11 @@ export default function Home() {
             </h1> <Image src={"/icon/icon4.png"} width={40} height={40} alt="icon2" className="w-10 h-10 aspect-square" /></div>
           </div>
           <p className="my-24 text-lg">
-            手話を学び、仕事にするということは聴覚に障害のある方々とのコミュニケーションをサポートするだけでなく、全ての人々が平等に情報やサービスにアクセスできる社会を築くために欠かせない存在です。<br></br>
+            手話を学び、仕事に活かすということは聴覚に障害のある方々とのコミュニケーションをサポートするだけでなく、全ての人々が平等に情報やサービスにアクセスできる社会を築くために欠かせない存在となります。<br></br>
             <br></br>
             言語の壁を超え、心をつなぐ手段として、手話は重要なコミュニケーションの形を提供していきます。<br></br>
             <br></br>
-            手話を使った通訳や支援だけでなく、サービス業、医療、教育、エンターテインメントなど、さまざまな分野で手話の活用が広がり続けています。手話の需要は今後さらに高まっていくでしょう。
+            手話を使った通訳や支援だけでなく、サービス業、医療、教育、エンターテインメントなど、さまざまな分野で手話の活用が広がっています。手話の需要は今後さらに高まっていくでしょう。
             <br></br>
             <br></br>
             <b>活躍する場所</b><br></br>
