@@ -40,7 +40,8 @@ export const ApiItem = async ({ archive, search, id, slug, category, sort, skip,
     try {
         const result = await axios.get(process.env.api_url + "api/" +
             archive +
-            "?search=" + `${search ? search : ""}` +
+            "?archive=" + `${archive ? archive : ""}` +
+            "&search=" + `${search ? search : ""}` +
             "&id=" + `${id ? id : ""}` +
             "&slug=" + `${slug ? slug : ""}` +
             "&category=" + `${category ? category : ""}` +

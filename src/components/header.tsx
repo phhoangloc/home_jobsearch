@@ -15,11 +15,11 @@ const Header = () => {
                     <Image src="/img/ロゴ仮.png" width={500} height={500} alt="logo" className='h-full w-auto p-4 cursor-pointer' />
                 </div>
                 <div className='flex flex-col justify-end w-full'>
-                    <MenuIcon onClick={() => set_menu(true)} className='lg:!hidden cursor-pointer' />
+                    <MenuIcon onClick={() => set_menu(true)} className='lg:!hidden cursor-pointer !w-12 !h-12 ml-auto mr-0 !block' />
 
 
                     <div className={`fixed w-screen h-screen z-10 top-0 left-0 bg-white transition-all duration-500 flex flex-col justify-center lg:!hidden ${_menu ? "translate-x-[0]" : "translate-x-[100%]"}`}>
-                        <CloseIcon className='absolute top-1 right-1 cursor-pointer ' onClick={() => set_menu(false)} />
+                        <CloseIcon className='absolute top-4 right-4 cursor-pointer lg:!hidden !w-12 !h-12' onClick={() => set_menu(false)} />
                         <p className='text-center text-blueTXT text-lg py-1 hover:font-bold cursor-pointer' onClick={() => toPage.push("/")} >ホーム </p>
                         <p className='text-center text-blueTXT text-lg py-1 hover:font-bold cursor-pointer' onClick={() => toPage.push("/search?location=&wt=&wstt=&license=&workplace=")} >仕事を探す </p>
                         <p className='text-center text-blueTXT text-lg py-1 hover:font-bold cursor-pointer' onClick={() => toPage.push("/facility")}>働く場 一覧</p>
@@ -27,7 +27,7 @@ const Header = () => {
                         <p className='text-center text-blueTXT text-lg py-1 hover:font-bold cursor-pointer' onClick={() => toPage.push("/contact")}>お問い合わせ</p>
                     </div>
                     <div className={`hidden lg:flex mr-0 ml-auto mb-4`}>
-                        <CloseIcon className='absolute top-1 right-1 cursor-pointer lg:!hidden ' onClick={() => set_menu(false)} />
+                        <CloseIcon className='absolute top-4 right-4 cursor-pointer lg:!hidden !w-12 !h-12' onClick={() => set_menu(false)} />
                         <p className='text-center text-blueTXT font-bold cursor-pointer w-[125px] hover:text-sky-600' onClick={() => toPage.push("/")} >ホーム </p>
                         <p className='text-center text-blueTXT font-bold cursor-pointer w-[125px] hover:text-sky-600' onClick={() => toPage.push("/search?location=&wt=&wstt=&license=&workplace=")} >仕事を探す </p>
                         <p className='text-center text-blueTXT font-bold cursor-pointer w-[125px] hover:text-sky-600' onClick={() => toPage.push("/facility")}>働く場 一覧</p>

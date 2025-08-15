@@ -222,11 +222,14 @@ export default function Home() {
         <div className='mx-auto mb-4 max-w-(--xl) p-10 '>
           <h2 className='text-2xl font-bold text-pinkTXT'>Facility Search</h2>
           <div className="h-1"></div>
-          <div className='flex w-full'><h1 className='text-3xl border-l-4 border-pinkTXT pl-2 font-semibold tracking-[1px] text-titleTXT'>施設を探す
-          </h1> <Image src={"/icon/icon5.png"} width={40} height={40} alt="icon2" className="w-10 h-10 aspect-square" /></div>
+          <div className='flex w-full'>
+            <h1 className='text-3xl border-l-4 border-pinkTXT pl-2 font-semibold tracking-[1px] text-titleTXT'>施設を探す
+            </h1>
+            <Image src={"/icon/icon5.png"} width={40} height={40} alt="icon2" className="w-10 h-10 aspect-square" />
+          </div>
           <div className='m-auto max-w-(--xl) grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 my-10 gap-2'>
             <div className=' relative col-span-1 sm:col-span-2 bg-white h-12 border shadow rounded '>
-              <p className='flex h-full flex-col justify-center font-bold px-2' onClick={() => set_modal(true)}>エリア</p>
+              <p className='flex h-full flex-col justify-center font-bold px-2' onClick={() => set_modal(true)}>{_location.toString() || "全国"}</p>
               {_modal ?
                 <div className='absolute top-0 w-full bg-white border rounded shadow-md overflow-hidden f'>
                   <div className='border-b-2 border-slate-200 h-12 flex justify-between px-2'>
@@ -253,8 +256,9 @@ export default function Home() {
                 </div> : null}
 
             </div>
-            <div className='col-span-1 flex flex-col justify-center text-center font-bold rounded bg-sky-800 text-white' onClick={() => toPage.push(`/facility?location=${_location}`)}>検索</div>
-          </div>
+            <div className={`col-span-2 lg:col-span-1 h-12 `}>
+              <div className={`w-1/2 m-auto h-full lg:w-full flex flex-col justify-center text-center font-bold rounded bg-sky-800 text-white`} onClick={() => toPage.push(`/facility?location=${_location}`)}>検索</div>
+            </div>          </div>
           <div className="h-24"></div>
           <h2 className='text-2xl font-bold text-pinkTXT'>News</h2>
           <div className="h-1"></div>

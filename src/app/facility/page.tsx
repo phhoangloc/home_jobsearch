@@ -6,6 +6,8 @@ import { ApiItem } from '@/api/client'
 import Image from 'next/image'
 import { FacilityType } from './[slug]/page'
 import { japanRegions } from '@/lib/area'
+import CloseIcon from '@mui/icons-material/Close';
+
 const Page = () => {
 
     const searchParam = useSearchParams()
@@ -20,7 +22,6 @@ const Page = () => {
     useEffect(() => {
         const getPost = async (area: string, location: string, page: number, limit: number) => {
             const result = await ApiItem({ archive: "facility", area, location, skip: page * limit, limit })
-            console.log(result)
             if (result.success) {
                 set_facilities(result.data)
             } else {
@@ -45,6 +46,13 @@ const Page = () => {
         }
     }
 
+    const [_modal, set_modal] = useState<boolean>(false)
+    const [_location, set_location] = useState<string[]>([])
+    const [_regionIndex, set_regionIndex] = useState<number>(-1)
+
+    useEffect(() => {
+        set_location(location.split(","))
+    }, [location])
     return (
         <div className='p-10 bg-facility-bg'>
             <div className='mx-auto mb-4 max-w-(--xl) text-white'>
@@ -54,9 +62,38 @@ const Page = () => {
                     <h1 className='text-3xl border-l-4 border-pinkTXT pl-2 font-semibold tracking-[1px] text-titleTXT'>施設紹介</h1>
                 </div>
             </div>
-            <div className="flex flex-wrap max-w-(--xl) m-auto">
-                <div className='w-48 text-slate-700 shadow rounded-md text-center m-2 font-bold p-1 bg-white cursor-pointer' onClick={() => { toPage.push("?area=&page=") }}>全国</div>
-                {japanRegions.map((r, index) => <div className='w-48 text-slate-700 shadow rounded-md text-center m-2 font-bold p-1 bg-white cursor-pointer' key={index} onClick={() => { toPage.push("?area=" + r.region + "&page=") }}>{r.region}</div>)}
+            <div className='m-auto max-w-(--xl) grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 my-10 gap-2'>
+                <div className=' relative col-span-1 sm:col-span-2 bg-white h-12 border shadow rounded '>
+                    <p className='flex h-full flex-col justify-center font-bold px-2' onClick={() => set_modal(true)}>{_location.toString() || "全国"}</p>
+                    {_modal ?
+                        <div className='absolute top-0 w-full bg-white border rounded shadow-md overflow-hidden f'>
+                            <div className='border-b-2 border-slate-200 h-12 flex justify-between px-2'>
+                                <p className='flex h-full flex-col justify-center font-bold'>エリア</p><CloseIcon className='my-auto cursor-pointer' onClick={() => set_modal(false)} />
+                            </div>
+                            <div className="flex">
+
+                                <div className='border-r-2 border-slate-200 w-20'>
+                                    {japanRegions.map((region, index) => <div className={`h-8 w-20 px-1 flex flex-col justify-center border-b border-slate-200 last:border-0 cursor-pointer ${index == _regionIndex ? "bg-search-bg text-white" : ""}`} key={index} onClick={() => set_regionIndex(index)}>{region.region}</div>)}
+                                </div>
+                                <div className="w-full">
+                                    <div className='h-8 flex flex-col justify-center text-center font-bold'>{japanRegions[_regionIndex]?.region}</div>
+                                    <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5'>
+                                        {japanRegions[_regionIndex]?.prefectures.map((pre, index) =>
+                                            <div className='px-1 flex gap-1' key={index}>
+                                                <input type='checkbox' checked={_location.includes(pre.name)} onChange={() => { set_location(lo => lo.includes(pre.name) ? lo.filter(l => l !== pre.name) : [...lo, pre.name]) }}></input>
+                                                <p className='h-8 flex flex-col justify-center'>{pre.name}</p>
+                                            </div>)}
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div> : null}
+
+                </div>
+                <div className={`col-span-2 lg:col-span-1 h-12 `}>
+                    <div className={`w-1/2 m-auto h-full lg:w-full flex flex-col justify-center text-center font-bold rounded bg-sky-800 text-white`} onClick={() => toPage.push(`/facility?location=${_location}`)}>検索</div>
+                </div>
             </div>
 
             <div className="max-w-(--xl) m-auto flex flex-wrap">
