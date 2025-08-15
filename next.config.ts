@@ -12,8 +12,8 @@ const nextConfig: NextConfig = {
     ],
   },
   env: {
-    api_url_: "https://buoncf.jp:4002/",
-    api_url: "http://localhost:4002/",
+    api_url: "https://buoncf.jp:4002/",
+    api_url_: "http://localhost:4002/",
     ftp_url: "https://image.buoncf.jp/career/",
   }
 };
