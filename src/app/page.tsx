@@ -54,7 +54,7 @@ export default function Home() {
     const getTag = async () => {
       const result = await ApiItem({ archive: "tag", limit: 20 })
       if (result.success) {
-        set_tag(result.data.map((t: { name: string }) => t.name))
+        set_tag(result.data.filter((t: { post: [] }) => t.post.length > 0).map((t: { name: string }) => t.name))
       }
     }
     getTag()
@@ -131,8 +131,8 @@ export default function Home() {
       </div>
       <div className=" bg-search-bg p-10" id="i">
         <SearchTool />
-        <div className="flex gap-2 w-full max-w-(--xl) mx-auto my-12">
-          {_tag.map((t, index) => <div onClick={() => toPage.push("/search?tag=" + t)} className="h-6 flex flex-col justify-center p-4 rounded-[18px] bg-white cursor-pointer" key={index}>{t}</div>)}
+        <div className="flex gap-2 w-full max-w-(--xl) mx-auto my-12 flex-wrap">
+          {_tag.map((t, index) => <div onClick={() => toPage.push("/search?tag=" + t)} className="h-6 w-max flex flex-col justify-center p-4 rounded-[18px] bg-white cursor-pointer" key={index}>{t}</div>)}
         </div>
         <div className='mx-auto mb-4 max-w-(--xl) text-white'>
           <h2 className='text-2xl font-bold'>Job Information Pickup</h2>
@@ -229,11 +229,12 @@ export default function Home() {
           </div>
           <div className='m-auto max-w-(--xl) grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 my-10 gap-2'>
             <div className=' relative col-span-1 sm:col-span-2 bg-white h-12 border shadow rounded '>
-              <p className='flex h-full flex-col justify-center font-bold px-2' onClick={() => set_modal(true)}>{_location.toString() || "全国"}</p>
+              <p className='font-bold p-2 line-clamp-1 h-8' onClick={() => set_modal(true)}>{_location.length ? _location.join(",") : "全国"}</p>
               {_modal ?
                 <div className='absolute top-0 w-full bg-white border rounded shadow-md overflow-hidden f'>
                   <div className='border-b-2 border-slate-200 h-12 flex justify-between px-2'>
-                    <p className='flex h-full flex-col justify-center font-bold'>エリア</p><CloseIcon className='my-auto cursor-pointer' onClick={() => set_modal(false)} />
+                    <p className='font-bold line-clamp-1 h-8 my-2' onClick={() => set_modal(true)}>{_location.length ? _location.join(",") : "全国"}</p>
+                    <CloseIcon className='my-auto cursor-pointer' onClick={() => set_modal(false)} />
                   </div>
                   <div className="flex">
 

@@ -62,11 +62,11 @@ const SearchTool = () => {
             </div>
             <div className='m-auto max-w-(--xl) grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 my-10 gap-2'>
                 <div className=' relative col-span-1 sm:col-span-2 bg-white h-12 border shadow rounded '>
-                    <p className='flex h-full flex-col justify-center font-bold px-2' onClick={() => set_modal(true)}>エリア</p>
+                    <p className='font-bold p-2 line-clamp-1 h-8' onClick={() => set_modal(true)}>{_location.length ? _location.join(",") : "エリア"}</p>
                     {_modal ?
                         <div className='absolute top-0 w-full bg-white border rounded shadow-md overflow-hidden f'>
                             <div className='border-b-2 border-slate-200 h-12 flex justify-between px-2'>
-                                <p className='flex h-full flex-col justify-center font-bold'>エリア</p><CloseIcon className='my-auto cursor-pointer' onClick={() => set_modal(false)} />
+                                <p className='font-bold line-clamp-1 py-2 h-8'>{_location.length ? _location.join(",") : "エリア"}</p><CloseIcon className='my-auto cursor-pointer' onClick={() => set_modal(false)} />
                             </div>
                             <div className="flex">
 
