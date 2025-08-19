@@ -1,7 +1,7 @@
 'use client'
 import axios from 'axios'
 import React, { useState } from 'react'
-import { useRouter } from 'next/navigation'
+
 const Page = () => {
     const [_name, set_name] = useState<string>("")
     const [_email, set_email] = useState<string>("")
@@ -9,15 +9,16 @@ const Page = () => {
     const [_refresh, set_refresh] = useState<number>(0)
     const [_warn, set_warn] = useState<string>("")
 
-    const toPage = useRouter()
     const sendMail = async (body: { name: string, email: string, content: string }) => {
         const newBody: {
             receipt?: string,
+            subject?: string,
             name: string,
             email: string,
             content: string
         } = body
         newBody.receipt = "h-loc@astem-co.co.jp,kimura@com-sagano.com"
+        newBody.subject = "若年層モデル事業就職サイトからの問い合わせ"
 
         const result = await axios.post(process.env.api_url + "api/mail", newBody)
         if (result.data.success) {
@@ -31,6 +32,7 @@ const Page = () => {
             }, 3000)
         }
     }
+
     return (
         <div className='bg-sky-500'>
             <div className="  p-10 max-w-(--xl) m-auto">
