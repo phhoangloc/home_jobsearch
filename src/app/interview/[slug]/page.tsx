@@ -1,25 +1,32 @@
 'use client'
 import { ApiItem } from '@/api/client'
 import { InterviewType } from '@/app/page'
-import { useParams } from 'next/navigation'
+import { useParams, useSearchParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 const Page = () => {
     const param = useParams<{ slug: string }>()
     const slug = param.slug
 
+    const searchParams = useSearchParams()
+    const archivePlus = searchParams.get("archivePlus")
     const [_post, set_post] = useState<InterviewType>()
     useEffect(() => {
-        const getItem = async (slug: string,) => {
-            const result = await ApiItem({ archive: "interview", slug })
+        const getItem = async (archivePlus: string, slug: string,) => {
+            const result = await ApiItem({ archive: "interview", archivePlus, slug })
             if (result.success) {
                 set_post(result.data[0])
             } else {
                 set_post(undefined)
             }
         }
-        getItem(slug)
-    }, [slug])
+        if (archivePlus) {
+            getItem(archivePlus, slug)
+        } else {
+            getItem("interview", slug)
+
+        }
+    }, [archivePlus, slug])
 
     console.log(_post)
     return (

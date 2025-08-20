@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import React from 'react'
-import { useParams } from 'next/navigation'
+import { useParams, useSearchParams } from 'next/navigation'
 import { ApiItem } from '@/api/client'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -34,18 +34,26 @@ const Page = () => {
     const param = useParams<{ slug: string }>()
     const slug = param.slug
 
+    const searchParams = useSearchParams()
+    const archivePlus = searchParams.get("archivePlus")
+
     const [_post, set_post] = useState<FacilityType>()
     useEffect(() => {
-        const getItem = async (slug: string,) => {
-            const result = await ApiItem({ archive: "facility", slug })
+        const getItem = async (archivePlus: string, slug: string,) => {
+            const result = await ApiItem({ archive: "facility", archivePlus, slug })
             if (result.success) {
                 set_post(result.data[0])
             } else {
                 set_post(undefined)
             }
         }
-        getItem(slug)
-    }, [slug])
+        if (archivePlus) {
+            getItem(archivePlus, slug)
+        } else {
+            getItem("facility", slug)
+
+        }
+    }, [archivePlus, slug])
 
     const formatPostNo = (input: string) => {
         if (input) {
