@@ -147,7 +147,7 @@ export default function Home() {
                 <Image src={process.env.ftp_url + p.image.name} fill className="object-cover" alt="post-cover" />
               </div>
               <div className="h-4"></div>
-              <div className="line-clamp-6 leading-5 text-sm" dangerouslySetInnerHTML={{ __html: p.content }}></div>
+              <div className="h-[100px] overflow-hidden leading-5 text-sm" dangerouslySetInnerHTML={{ __html: p.content.split("。")[0] + "。。。" }}></div>
               <div className='w-5/6 h-8 mx-auto mt-4 bg-sky-900 text-white flex flex-col justify-center text-center font-bold rounded-2xl shadow cursor-pointer' onClick={() => toPage.push("/post/" + p.slug)}>詳しく見る</div>
 
             </div>)}
@@ -290,13 +290,13 @@ export default function Home() {
           <div className="contact grid max-w-(--sm) mx-auto bg-white py-10 p-4 md:p-8 lg:p-12 rounded shadow">
             <h1 className="font-bold text-2xl text-center text-titleTXT">お問い合わせ</h1>
             <div>名称</div>
-            <input className="h-12 border rounded border-slate-300" onChange={(e) => set_name(e.currentTarget.value)} value={_name} />
+            <input className="h-12 w-full border rounded border-slate-300" onChange={(e) => set_name(e.currentTarget.value)} value={_name} />
             <div className="h-4"></div>
             <div>eメール</div>
-            <input className="h-12 border rounded border-slate-300" onChange={(e) => set_email(e.currentTarget.value)} value={_email} />
+            <input className="h-12 w-full border rounded border-slate-300" onChange={(e) => set_email(e.currentTarget.value)} value={_email} />
             <div className="h-4"></div>
             <div>内容</div>
-            <textarea className="h-36 border rounded border-slate-300" value={_content} onChange={(e) => set_content(e.currentTarget.value)} />
+            <textarea className="h-36 w-full border rounded border-slate-300" value={_content} onChange={(e) => set_content(e.currentTarget.value)} />
             <button className="bg-search-bg w-max mx-auto mt-4 text-lg px-4 py-2 rounded text-white" onClick={() => console.log("お問い合わせは送信されました。応答が届きましたら、ボイスメールをご確認ください。")} >送信</button>
           </div>
         </div>
