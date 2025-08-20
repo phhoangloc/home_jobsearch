@@ -100,7 +100,7 @@ const Page = () => {
                 <div className="h-12"></div>
                 <div className='bg-sky-800 w-max text-white py-1 px-4 rounded-t-xl ml-2'> <p>詳細</p></div>
                 <div className='border border-sky-800 rounded p-2 md:p-8 lg:p-12 leading-7 dangerousBox' dangerouslySetInnerHTML={{ __html: _post?.content || "" }} />
-                <div className='w-max px-8 py-2 bg-sky-800 rounded-lg mx-auto mt-8 text-white cursor-pointer' onClick={() => { set_mailModal(true) }}>応募はこちらから</div>
+                <div className='w-max px-8 py-2 bg-sky-800 rounded-lg mx-auto mt-8 text-white cursor-pointer' onClick={() => { set_mailModal(true) }}>この求人情報へのお問い合わせはこちら</div>
 
             </div>
             <div className={` backdrop-brightness-75 w-screen h-screen top-0 left-0 flex flex-col justify-center  fixed ${_openMailModal ? "block" : "hidden"}`} key={_refresh}>

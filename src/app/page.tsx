@@ -100,7 +100,7 @@ export default function Home() {
     <div>
       <div className="min-h-screen relative">
         <div>
-          <div className="h-screen lg:flex w-full absolute">
+          <div className="h-screen lg:flex w-full absolute max-h-[1100px]">
             <div className="w-full h-1/2 lg:w-1/2 lg:h-full relative">
               <Image src={"/img/cover3.jpg"} fill className="object-cover" alt="cover-left" />
             </div>

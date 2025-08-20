@@ -114,8 +114,8 @@ const Page = () => {
                             <button className='block max-w px-8 py-2 bg-sky-950 rounded-lg mx-auto mt-8 text-white' onClick={() => toPage.push("/post/" + item.slug)} >詳細を見る</button>
                         </div>
                     ) :
-                    <div>
-                        <h2 style={{ textAlign: "center" }}>結果がありません。</h2>
+                    <div className='h-60'>
+                        <h2 className='text-center'>結果がありません。</h2>
                     </div>}
             </div>
         </div>

@@ -119,7 +119,7 @@ const Page = () => {
                         <h2 style={{ textAlign: "center" }}>結果がありません。</h2>
                     </div>}
             </div>
-            <Pagination page={pageNo} next={() => { toPage.push("?area=" + area + "&lo=" + location + "&page=" + (pageNo + 1)) }} prev={() => { toPage.push("?area=" + area + "&lo=" + location + "&page=" + (pageNo - 1)) }} end={_facilities.length < _limit} onClick={(p) => { { toPage.push("?area=" + area + "&lo=" + location + "&page=" + (p)) } }} />
+            <Pagination page={pageNo} next={() => { toPage.push("?area=" + area + "&location=" + location + "&page=" + (pageNo + 1)) }} prev={() => { toPage.push("?area=" + area + "&location=" + location + "&page=" + (pageNo - 1)) }} end={_facilities.length < _limit} onClick={(p) => { { toPage.push("?area=" + area + "&location=" + location + "&page=" + (p)) } }} />
         </div>
     )
 }
