@@ -109,14 +109,14 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="text-center w-full h-max flex flex-col justify-center text-5xl md:text-6xl lg:text-7xl text-white font-bold sticky top-[50vh] leading-[1.5] ">
+          <div className="text-center w-full h-max flex flex-col justify-center text-4xl md:text-6xl lg:text-7xl text-white font-bold sticky top-[50vh] leading-[1.5] ">
             <h2 style={{ textShadow: "1px 1px 3px #444" }}>手話を活かして
               <br></br>働くということ。
             </h2>
           </div>
           <div className="h-[150vh] max-h-[1100px]"></div>
         </div>
-        <div className="h-max flex flex-col justify-end max-w-[1200px] m-auto">
+        <div className="h-max flex flex-col justify-end max-w-[1200px] m-auto px-4">
           <p className="text-center text-lg">
             手話を通じてコミュニケーションの架け橋となる仲間を探しています。
             <br></br>
@@ -129,7 +129,7 @@ export default function Home() {
           <div className="h-36"></div>
         </div>
       </div>
-      <div className=" bg-search-bg p-10" id="i">
+      <div className=" bg-search-bg p-4 md:p-8" id="i">
         <SearchTool />
         <div className="flex gap-2 w-full max-w-(--xl) mx-auto my-12 flex-wrap">
           {_tag.map((t, index) => <div onClick={() => toPage.push("/search?tag=" + t)} className="h-6 w-max flex flex-col justify-center p-4 rounded-[18px] bg-white cursor-pointer" key={index}>{t}</div>)}
@@ -155,7 +155,7 @@ export default function Home() {
         <div className='w-max h-10 mx-auto mt-12 bg-sky-800 text-white flex flex-col justify-center text-center font-bold shadow cursor-pointer px-4' onClick={() => toPage.push("/post/")}>すべての求人情報をチェック</div>
 
       </div>
-      <div className="max-w-(--xl) m-auto p-10" id="h">
+      <div className="max-w-(--xl) m-auto  p-4 md:p-8" id="h">
         <div className='mx-auto mb-4 max-w-(--xl) '>
           <h2 className='text-2xl font-bold text-pinkTXT'>Interview</h2>
           <div className="h-1"></div>
@@ -192,7 +192,7 @@ export default function Home() {
       </div>
       <div className="bg-white" id="j">
 
-        <div className="max-w-(--xl) m-auto p-10" id="j">
+        <div className="max-w-(--xl) m-auto p-4 md:p-8" id="j">
           <div className='mx-auto mb-4 max-w-(--xl) '>
             <h2 className='text-2xl font-bold text-pinkTXT'>Industry Introduction</h2>
             <div className="h-1"></div>
@@ -218,8 +218,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="bg-facility-bg p-10 " id="f">
-        <div className='mx-auto mb-4 max-w-(--xl) p-10 '>
+      <div className="bg-facility-bg  p-4 md:p-8" id="f">
+        <div className='mx-auto mb-4 max-w-(--xl)  '>
           <h2 className='text-2xl font-bold text-pinkTXT'>Facility Search</h2>
           <div className="h-1"></div>
           <div className='flex w-full'>
@@ -278,7 +278,7 @@ export default function Home() {
         </div>
       </div>
       <div className="bg-search-bg">
-        <div className="  p-10 max-w-(--xl) m-auto">
+        <div className="p-4 md:p-8 max-w-(--xl) m-auto">
           <div className="text-white">
             <h2 className='text-2xl font-bold'>Contact</h2>
             <div className="h-1"></div>
@@ -286,6 +286,7 @@ export default function Home() {
               <h1 className='text-3xl border-l-4 pl-2 font-semibold tracking-[1px] '>お問い合わせ</h1>
             </div>
           </div>
+          <div className="h-12"></div>
           <div className="contact grid max-w-(--sm) mx-auto bg-white py-10 p-4 md:p-8 lg:p-12 rounded shadow">
             <h1 className="font-bold text-2xl text-center text-titleTXT">お問い合わせ</h1>
             <div>名称</div>

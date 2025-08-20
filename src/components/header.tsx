@@ -11,10 +11,10 @@ const Header = () => {
     return (
         <div className="bg-header-bg">
             <div className='max-w-(--xxl) m-auto h-[100px] flex'>
-                <div className='relative h-full'>
-                    <Image src="/img/ロゴ仮.png" width={500} height={500} alt="logo" className='h-full w-auto p-4 cursor-pointer' onClick={() => toPage.push("/")} />
+                <div className='relative h-full w-full'>
+                    <Image src="/img/ロゴ仮.png" width={500} height={500} alt="logo" className='h-full !w-auto p-4 cursor-pointer' onClick={() => toPage.push("/")} />
                 </div>
-                <div className='flex flex-col justify-end w-full'>
+                <div className='flex flex-col justify-end'>
                     <MenuIcon onClick={() => set_menu(true)} className='lg:!hidden cursor-pointer !w-12 !h-12 ml-auto mr-0 !block' />
 
 
