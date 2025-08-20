@@ -12,7 +12,13 @@ export type PostType = {
     title: string,
     slug: string,
     worktype: string,
-    tag: string,
+    tag: {
+        postId: number,
+        tag: {
+            id: number,
+            name: string
+        }
+    }[],
     workstatus: string,
     worktime: string,
     worksalary: string,
@@ -86,15 +92,19 @@ const Page = () => {
             <div className="max-w-(--xl) m-auto">
                 {_posts.length ?
                     _posts.map((item, index) =>
-                        <div key={index} className='bg-white p-2 md:px-4 lg:p-8 rounded shadow'>
-                            <div className="sm:flex gap-4">
-                                <div className="sm:w-1/2 ">
+                        <div key={index} className='bg-white p-2 md:px-4 lg:p-8 rounded shadow mb-12'>
+                            <div className="flex flex-col-reverse md:flex-row  gap-4">
+                                <div className="w-full md:w-1/2 ">
                                     <h2 className='font-bold text-lg text-titleTXT'>{item.workplace?.name}</h2>
                                     <h4 className='text-sm'>〒{item.workplace?.postno}</h4>
                                     <h3>{item.workplace?.address.split("　")[0]}</h3>
                                     <h3>{item.workplace?.address.split("　")[1] ? item.workplace?.address.split("　")[1] : ""}</h3>
                                     <div style={{ paddingTop: "10px", margin: "10px 10px 0px 0px", borderTop: "1px solid #aaa" }}>
                                         <h4 className='text-center font-bold text-lg mt-2 text-titleTXT'>{item.title}</h4>
+                                        <div className='flex flex-wrap gap-2 my-2'>
+
+                                            {item.tag.map(t => t.tag).map((tag, index) => <div className='text-sm py-1 px-4 rounded-2xl bg-blueTXT/15' key={index}>{tag.name}</div>)}
+                                        </div>
                                         <h4 className='h-12'>職種：<span className='font-bold'>{item.worktype}</span></h4>
                                         <h4 className='h-12'>雇用形態：<span className='font-bold'>{item.workstatus}</span></h4>
                                         <h4 className='h-12'>通勤時間：<span className='font-bold'>{item.worktime}</span></h4>
@@ -104,14 +114,15 @@ const Page = () => {
                                         <h4 className='h-12'>掲載終了日:<span className='font-bold'> {moment(item.endDate).format("YYYY年/MM月/DD日")}</span></h4>
                                     </div>
                                 </div>
-                                <div className="relative hidden w-1/2 sm:block aspect-square rounded overflow-hidden">
+                                <div className="relative w-full md:w-1/2 sm:block aspect-square rounded overflow-hidden">
                                     {item.workplace?.image?.name ?
                                         <Image src={process.env.FTP_URL + "img/career/" + item.workplace?.image?.name} fill style={{ objectFit: "cover" }} alt="home" /> :
                                         <Image src={"/img/home.jpg"} fill style={{ objectFit: "cover" }} alt="home" />}
                                 </div>
 
                             </div>
-                            <button className='block max-w px-8 py-2 bg-sky-950 rounded-lg mx-auto mt-8 text-white' onClick={() => toPage.push("/post/" + item.slug)} >詳細を見る</button>
+                            <button className='block max-w px-8 py-2 bg-sky-900 rounded-lg mx-auto mt-8 text-white cursor-pointer' onClick={() => toPage.push("/post/" + item.slug)} >詳細を見る</button>
+                            <div className="h-12"></div>
                         </div>
                     ) :
                     <div className='h-60'>

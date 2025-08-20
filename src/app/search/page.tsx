@@ -77,7 +77,7 @@ const Page = () => {
     const toPage = useRouter()
     return (
 
-        <div className='bg-search-bg p-10'>
+        <div className='bg-search-bg p-4 md:p-8 lg:p-10'>
             <SearchTool />
             <div className='mx-auto mb-4 max-w-(--xl) text-white'>
                 <h2 className='text-2xl font-bold'>Job Information</h2>
@@ -91,8 +91,8 @@ const Page = () => {
                 {_posts.length ?
                     _posts.map((item, index) =>
                         <div key={index} className='bg-white p-2 md:px-4 lg:p-8 rounded shadow mb-12'>
-                            <div className="sm:flex gap-4">
-                                <div className="sm:w-1/2 ">
+                            <div className="flex flex-col-reverse md:flex-row  gap-4">
+                                <div className="w-full md:w-1/2 ">
                                     <h2 className='font-bold text-lg text-titleTXT'>{item.workplace?.name}</h2>
                                     <h4 className='text-sm'>〒{item.workplace?.postno}</h4>
                                     <h3>{item.workplace?.address.split("　")[0]}</h3>
@@ -112,7 +112,7 @@ const Page = () => {
                                         <h4 className='h-12'>掲載終了日:<span className='font-bold'> {moment(item.endDate).format("YYYY年/MM月/DD日")}</span></h4>
                                     </div>
                                 </div>
-                                <div className="relative hidden w-1/2 sm:block aspect-square rounded overflow-hidden">
+                                <div className="relative w-full md:w-1/2 sm:block aspect-square rounded overflow-hidden">
                                     {item.workplace?.image?.name ?
                                         <Image src={process.env.FTP_URL + "img/career/" + item.workplace?.image?.name} fill style={{ objectFit: "cover" }} alt="home" /> :
                                         <Image src={"/img/home.jpg"} fill style={{ objectFit: "cover" }} alt="home" />}
@@ -120,9 +120,10 @@ const Page = () => {
 
                             </div>
                             <button className='block max-w px-8 py-2 bg-sky-900 rounded-lg mx-auto mt-8 text-white cursor-pointer' onClick={() => toPage.push("/post/" + item.slug)} >詳細を見る</button>
+                            <div className="h-12"></div>
                         </div>
                     ) :
-                    <div>
+                    <div className='h-40'>
                         <h2 style={{ textAlign: "center" }}>結果がありません。</h2>
                     </div>}
             </div>
