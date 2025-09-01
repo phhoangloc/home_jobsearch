@@ -7,7 +7,6 @@ import { PostType } from '../page'
 import Image from 'next/image'
 import { jpyFormatter } from '@/lib/currency'
 import moment from 'moment'
-import Link from 'next/link'
 import axios from 'axios'
 const Page = () => {
     const param = useParams<{ slug: string }>()
@@ -35,6 +34,7 @@ const Page = () => {
 
     const [_openMailModal, set_mailModal] = useState<boolean>(false)
     const [_to, set_to] = useState<string>("")
+    const [_name, set_name] = useState<string>("")
     const [_mail, set_mail] = useState<string>("")
     const [_subject, set_subject] = useState<string>("")
     const [_content, set_content] = useState<string>("")
@@ -47,12 +47,13 @@ const Page = () => {
         }
     }, [_openMailModal, _post])
 
-    const sendMail = async (body: { receipt: string, subject: string, content: string, email: string }) => {
+    const sendMail = async (body: { receipt: string, subject: string, content: string, email: string, name: string }) => {
         const newBody: {
             receipt?: string,
             subject?: string,
             email: string,
-            content: string
+            content: string,
+            name: string
         } = body
 
         const result = await axios.post(process.env.api_url + "api/apply", newBody)
@@ -105,25 +106,25 @@ const Page = () => {
             </div>
             <div className={` backdrop-brightness-75 w-screen h-screen top-0 left-0 flex flex-col justify-center  fixed ${_openMailModal ? "block" : "hidden"}`} key={_refresh}>
                 <div className='w-11/12 max-w-(--lg) m-auto bg-white p-4 rounded-md shadow'>
-                    <div>宛先:</div>
-                    <div><input
-                        onFocus={(e) => { e.currentTarget.style.outline = "none"; }}
-                        className='border-b border-slate-300 w-full mb-4' value={_to} onChange={(e) => set_to(e.target.value)}></input>
-                    </div>
-                    <div>件名:</div>
+                    <div>件名:<span className='text-red-500 text-sm opacity-50'>必須</span></div>
                     <div>
                         <input onFocus={(e) => { e.currentTarget.style.outline = "none"; }}
                             className='border-b border-slate-300 w-full mb-4' value={_subject} onChange={(e) => set_subject(e.target.value)}>
                         </input>
                     </div>
-                    <div>内容:</div>
+                    <div>内容:<span className='text-red-500 text-sm opacity-50'>必須</span></div>
                     <div>
                         <textarea
                             onFocus={(e) => { e.currentTarget.style.outline = "none"; }}
                             className='border-b border-slate-300 w-full h-28' value={_content} onChange={(e) => set_content(e.target.value)}>
                         </textarea>
                     </div>
-                    <div>メール:</div>
+                    <div>名称:<span className='text-red-500 text-sm opacity-50'>必須</span></div>
+                    <div><input
+                        onFocus={(e) => { e.currentTarget.style.outline = "none"; }}
+                        className='border-b border-slate-300 w-full mb-4' value={_name} onChange={(e) => set_name(e.target.value)}></input>
+                    </div>
+                    <div>メールアドレス:<span className='text-red-500 text-sm opacity-50'>必須</span></div>
                     <div><input
                         onFocus={(e) => { e.currentTarget.style.outline = "none"; }}
                         className='border-b border-slate-300 w-full mb-4' value={_mail} onChange={(e) => set_mail(e.target.value)}></input>
@@ -139,7 +140,7 @@ const Page = () => {
                             set_refresh(n => n + 1)
                             set_mailModal(false)
                         }}>キャンセル</button>
-                        <button className='w-28 h-12 bg-sky-600 text-white rounded-md block m-0 cursor-pointer' onClick={() => sendMail({ receipt: _to, subject: _subject, content: _content, email: _mail })}>送信</button>
+                        <button className='w-28 h-12 bg-sky-600 text-white rounded-md block m-0 cursor-pointer' onClick={() => sendMail({ receipt: _to, subject: _subject, content: _content, email: _mail, name: _name })}>送信</button>
                     </div>
                 </div>
             </div>

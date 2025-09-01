@@ -5,11 +5,14 @@ import moment from 'moment'
 import { useState, useEffect } from 'react'
 import { NewsType } from '../page'
 import { ApiItem } from '@/api/client'
+import { useSearchParams } from 'next/navigation'
 const Page = () => {
+    const searchParam = useSearchParams()
+    const archivePlus = searchParam.get("archivePlus")
     const [_news, set_news] = useState<NewsType[]>()
     useEffect(() => {
         const getNews = async () => {
-            const result = await ApiItem({ archive: "news", limit: 10 })
+            const result = await ApiItem({ archive: "news", limit: 10, archivePlus: archivePlus || undefined })
             if (result.success) {
                 set_news(result.data)
             } else {

@@ -214,7 +214,7 @@ export default function Home() {
           </p>
           <div className="md:flex w-full max-w-(--md) mx-auto">
             <ButtonWeb name="施設を探す" bg="#F6CA1C" color="#594a36" icon={<KeyboardArrowRightIcon style={{ width: "40px", height: "40px", padding: "5px", boxSizing: "border-box" }} />} onClick={() => toPage.push("#f")} />
-            <ButtonWeb name="先輩たちの声を聞いてみる" bg="#e68a01" color="white" icon={<KeyboardArrowRightIcon style={{ width: "40px", height: "40px", padding: "5px", boxSizing: "border-box" }} />} onClick={() => toPage.push("#h")} />
+            <ButtonWeb name="先輩たちの声を聞いてみる" bg="#e68a01" color="white" icon={<KeyboardArrowRightIcon style={{ width: "40px", height: "40px", padding: "5px", boxSizing: "border-box" }} />} onClick={() => toPage.push("/interview/")} />
           </div>
         </div>
       </div>
