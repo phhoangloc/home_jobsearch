@@ -3,7 +3,7 @@ import "../style/globals.css";
 import localFont from 'next/font/local'
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-
+import { Suspense } from "react";
 const myFont = localFont({
   src: [
     { path: '../font/ZenKakuGothicNew-Black.ttf', weight: "400", style: "normal" },
@@ -28,7 +28,9 @@ export default function RootLayout({
         className={`${myFont.className} bg-page-bg  min-h-screen`}
       >
         <Header />
-        {children}
+        <Suspense>
+          {children}
+        </Suspense>
         <Footer />
       </body>
     </html>

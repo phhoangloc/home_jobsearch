@@ -20,7 +20,7 @@ const Page = () => {
             }
         }
         getNews()
-    }, [])
+    }, [archivePlus])
     return (
         <div className='p-10 min-h-screen bg-facility-bg'>
             <div className="max-w-(--lg) m-auto">
