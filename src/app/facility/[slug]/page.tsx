@@ -21,6 +21,7 @@ export type FacilityType = {
         name: string
     },
     address: string,
+    addressno: string,
     location: string,
     area: string,
     phone: string,
@@ -85,7 +86,7 @@ const Page = () => {
                 </div>
                 <div className="h-12"></div>
                 <h3 className='text-lg font-bold opacity-50'><span>〒{_post?.postno ? formatPostNo(_post?.postno) : null}</span> </h3>
-                <h3 className='text-xl font-bold'>{_post?.address}</h3>
+                <h3 className='text-xl font-bold'>{_post?.address} {_post?.addressno}</h3>
                 <div className='social_icon'>
                     {_post?.homepage ?
                         <Link className='flex gap-2' href={_post.homepage} target='_blank'>
@@ -101,10 +102,11 @@ const Page = () => {
                 <div className="h-12"></div>
                 <div className='dangerousBox min-h-96' dangerouslySetInnerHTML={{ __html: _post?.content || "" }} />
                 <div className="h-12"></div>
-                <div className="min-h-96 w-full bg-black flex flex-col justify-center">
-                    {_post?.video?.length ? <iframe style={{ width: "100%", aspectRatio: "1.75" }} src={"https://www.youtube.com/embed/" + _post?.video} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe> :
-                        <h1 className='text-white text-center font-bold'>NO VIDEO</h1>}
-                </div>
+                {_post?.video?.length ?
+                    <div className="min-h-96 w-full bg-black flex flex-col justify-center">
+                        <iframe style={{ width: "100%", aspectRatio: "1.75" }} src={"https://www.youtube.com/embed/" + _post?.video} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                    </div> : null
+                }
             </div>
         </div>
     )

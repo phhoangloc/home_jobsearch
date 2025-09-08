@@ -108,8 +108,8 @@ const Page = () => {
                             <div className="mt-4">
                                 <h3 className='font-bold text-lg'>{d.name}</h3>
                                 <p className=' opacity-75'>〒{formatPostNo(d.postno)}</p>
-                                <p className=' opacity-75'>{d.address.split("　")[0]}</p>
-                                <p className=' opacity-75'>{d.address.split("　")?.[1] ? d.address.split("　")?.[1] : "---"}</p>
+                                <p className=' opacity-75'>{d.address}{d.addressno}</p>
+                                <p className='h-12'></p>
                                 <button className='block max-w px-8 py-2 bg-sky-950 rounded-lg mx-auto mt-2 text-white cursor-pointer' onClick={() => toPage.push("/facility/" + d.slug)} >詳細を見る</button>
 
                             </div>
