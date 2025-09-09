@@ -100,9 +100,9 @@ const Page = () => {
                 {set_facilities.length ?
                     _facilities.map((d, index) =>
                         <div className="w-full md:w-1/2  md:p-4" key={index}>
-                            <div className="cover">
+                            <div className="cover" style={{ backgroundColor: "#ccc" }}>
                                 {d?.image?.name ?
-                                    <Image src={process.env.ftp_url + d?.image?.name} width={500} height={500} style={{ width: "auto", height: "100%" }} alt="home" /> :
+                                    <Image src={process.env.ftp_url + d?.image?.name} width={500} height={500} style={{ width: "auto", height: "100%", margin: "auto" }} alt="home" /> :
                                     <Image src={"/img/home.jpg"} fill style={{ objectFit: "cover" }} alt="home" />}
                             </div>
                             <div className="mt-4">

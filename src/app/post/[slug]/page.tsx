@@ -75,7 +75,7 @@ const Page = () => {
                 <div className='text-2xl text-center font-bold text-titleTXT' >求人情報</div>
             </div>
             <div className="bg-white w-11/12 max-w-(--lg) m-auto  p-2 md:p-8 lg:p-12 mb-12 shadow">
-                <div className='relative'>
+                <div className='relative aspect-video' style={{ backgroundColor: "#ccc" }}>
                     {process.env.ftp_url && _post?.image?.name ?
                         <Image src={process.env.ftp_url + _post?.image?.name} width={500} height={500} style={{ width: "100%", height: "auto" }} alt='cover' />
                         : null}
@@ -106,28 +106,28 @@ const Page = () => {
             </div>
             <div className={` backdrop-brightness-75 w-screen h-screen top-0 left-0 flex flex-col justify-center  fixed ${_openMailModal ? "block" : "hidden"}`} key={_refresh}>
                 <div className='w-11/12 max-w-(--lg) m-auto bg-white p-4 rounded-md shadow'>
+                    <div>お名前:<span className='text-red-500 text-sm opacity-50'>必須</span></div>
+                    <div><input
+                        onFocus={(e) => { e.currentTarget.style.outline = "none"; }}
+                        className='border-b border-slate-300 w-full mb-4' value={_mail} onChange={(e) => set_mail(e.target.value)}></input>
+                    </div>
+                    <div>メールアドレス:<span className='text-red-500 text-sm opacity-50'>必須</span></div>
+                    <div><input
+                        onFocus={(e) => { e.currentTarget.style.outline = "none"; }}
+                        className='border-b border-slate-300 w-full mb-4' value={_name} onChange={(e) => set_name(e.target.value)}></input>
+                    </div>
                     <div>件名:<span className='text-red-500 text-sm opacity-50'>必須</span></div>
                     <div>
                         <input onFocus={(e) => { e.currentTarget.style.outline = "none"; }}
                             className='border-b border-slate-300 w-full mb-4' value={_subject} onChange={(e) => set_subject(e.target.value)}>
                         </input>
                     </div>
-                    <div>内容:<span className='text-red-500 text-sm opacity-50'>必須</span></div>
+                    <div>問い合わせの内容:<span className='text-red-500 text-sm opacity-50'>必須</span></div>
                     <div>
                         <textarea
                             onFocus={(e) => { e.currentTarget.style.outline = "none"; }}
                             className='border-b border-slate-300 w-full h-28' value={_content} onChange={(e) => set_content(e.target.value)}>
                         </textarea>
-                    </div>
-                    <div>名称:<span className='text-red-500 text-sm opacity-50'>必須</span></div>
-                    <div><input
-                        onFocus={(e) => { e.currentTarget.style.outline = "none"; }}
-                        className='border-b border-slate-300 w-full mb-4' value={_name} onChange={(e) => set_name(e.target.value)}></input>
-                    </div>
-                    <div>メールアドレス:<span className='text-red-500 text-sm opacity-50'>必須</span></div>
-                    <div><input
-                        onFocus={(e) => { e.currentTarget.style.outline = "none"; }}
-                        className='border-b border-slate-300 w-full mb-4' value={_mail} onChange={(e) => set_mail(e.target.value)}></input>
                     </div>
                     <div className='h-12 "'></div>
                     <div className=' text-sky-600 '>{_warn}</div>

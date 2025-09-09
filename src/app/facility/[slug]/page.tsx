@@ -78,9 +78,9 @@ const Page = () => {
             <div className="bg-white w-11/12 max-w-(--lg) m-auto  p-2 md:p-8 lg:p-12 mb-12 shadow">
                 <h2 className='text-center text-xl font-bold text-titleTXT opacity-50'>{_post?.contenttitle}</h2>
                 <h1 className='text-center text-2xl font-bold text-titleTXT mb-12'>{_post?.name}</h1>
-                <div className='relative'>
+                <div className='relative w-full aspect-video' style={{ backgroundColor: "#ccc" }}>
                     {process.env.ftp_url && _post?.image?.name ?
-                        <Image src={process.env.ftp_url + _post?.image?.name} width={500} height={500} style={{ width: "100%", height: "auto" }} alt='cover' />
+                        <Image src={process.env.ftp_url + _post?.image?.name} width={500} height={500} className='h-full w-auto m-auto' alt='cover' />
                         : <div className='h-full w-full flex-col justify-center'><h1>NO IMAGE</h1></div>
                     }
                 </div>
@@ -100,7 +100,7 @@ const Page = () => {
                 </div>
                 <div className='dangerousBox' dangerouslySetInnerHTML={{ __html: _post?.map ? _post?.map : "" }} />
                 <div className="h-12"></div>
-                <div className='dangerousBox min-h-96' dangerouslySetInnerHTML={{ __html: _post?.content || "" }} />
+                <div className='dangerousBox min-h-24' dangerouslySetInnerHTML={{ __html: _post?.content || "" }} />
                 <div className="h-12"></div>
                 {_post?.video?.length ?
                     <div className="min-h-96 w-full bg-black flex flex-col justify-center">

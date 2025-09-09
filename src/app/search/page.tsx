@@ -75,6 +75,7 @@ const Page = () => {
     }, [license, location, tag, workplace, workstt, worktype])
 
     const toPage = useRouter()
+    console.log(_posts)
     return (
 
         <div className='bg-search-bg p-4 md:p-8 lg:p-10'>
@@ -114,8 +115,8 @@ const Page = () => {
                                 </div>
                                 <div className="relative w-full md:w-1/2 sm:block aspect-square rounded overflow-hidden">
                                     {item.workplace?.image?.name ?
-                                        <Image src={process.env.FTP_URL + "img/career/" + item.workplace?.image?.name} fill style={{ objectFit: "cover" }} alt="home" /> :
-                                        <Image src={"/img/home.jpg"} fill style={{ objectFit: "cover" }} alt="home" />}
+                                        <Image src={process.env.ftp_url + item.workplace?.image?.name} fill style={{ objectFit: "cover" }} alt="home" /> :
+                                        <Image src={process.env.ftp_url + "2025.06.20_05-29-00_home.webp"} fill style={{ objectFit: "cover" }} alt="home" />}
                                 </div>
 
                             </div>
