@@ -75,7 +75,7 @@ const Page = () => {
                 <div className='text-2xl text-center font-bold text-titleTXT' >求人情報</div>
             </div>
             <div className="bg-white w-11/12 max-w-(--lg) m-auto  p-2 md:p-8 lg:p-12 mb-12 shadow">
-                <div className='relative aspect-video' style={{ backgroundColor: "#ccc" }}>
+                <div className='relative w-full'>
                     {process.env.ftp_url && _post?.image?.name ?
                         <Image src={process.env.ftp_url + _post?.image?.name} width={500} height={500} style={{ width: "100%", height: "auto" }} alt='cover' />
                         : null}
