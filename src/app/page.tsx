@@ -223,7 +223,7 @@ export default function Home() {
           <h2 className='text-2xl font-bold text-pinkTXT'>Facility Search</h2>
           <div className="h-1"></div>
           <div className='flex w-full'>
-            <h1 className='text-3xl border-l-4 border-pinkTXT pl-2 font-semibold tracking-[1px] text-titleTXT'>施設を探す
+            <h1 className='text-3xl border-l-4 border-pinkTXT pl-2 font-semibold tracking-[1px] text-titleTXT'>働く場を探す
             </h1>
             <Image src={"/icon/icon5.png"} width={40} height={40} alt="icon2" className="w-10 h-10 aspect-square" />
           </div>

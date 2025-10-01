@@ -17,7 +17,7 @@ const Footer = () => {
 
                 </div>
                 <div className='text-center mb-4'>
-                    <h4 className='font-bold text-xl cursor-pointer hover:text-sky-600' onClick={() => toPage.push("/facility")}>施設一覧</h4>
+                    <h4 className='font-bold text-xl cursor-pointer hover:text-sky-600' onClick={() => toPage.push("/facility")}>働く場一覧</h4>
                 </div>
                 <div className='text-center mb-4'>
                     <h4 className='font-bold text-xl cursor-pointer hover:text-sky-600' onClick={() => toPage.push("/news")}>ニュース</h4>
