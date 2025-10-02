@@ -17,7 +17,7 @@ const Page = () => {
 
     useEffect(() => {
         const getItem = async (archivePlus: string, slug: string,) => {
-            const result = await ApiItem({ archive: "post", archivePlus, slug })
+            const result = await ApiItem({ archive: "post", archivePlus, slug, startDate: "1", endDate: "1" })
             if (result.success) {
                 set_post(result.data[0])
             } else {
@@ -82,6 +82,10 @@ const Page = () => {
                 </div>
                 <h2 className='text-center m-auto font-bold text-titleTXT mt-20 text-xl'><span>{_post?.contenttitle}</span><br></br>{_post?.title}</h2>
                 <div className="w-full max-w-(--sm) m-auto" >
+                    <div className='flex flex-wrap gap-2 my-2'>
+                        {_post?.tag.map(t => t.tag).map((tag, index) => <div className='text-sm py-1 px-4 rounded-2xl bg-blueTXT/15' key={index}>{tag.name}</div>)}
+                    </div>
+                    .h-6
                     <div className='sm:flex gap-2 leading-7'><h4 className='w-24 font-bold text-sky-900'>職種</h4><div>{_post?.worktype}</div></div>
                     <div className='sm:flex gap-2 leading-7'>
                         <h4 className='w-24 font-bold text-sky-900'>勤務地</h4>

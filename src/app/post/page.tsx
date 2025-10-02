@@ -18,8 +18,7 @@ export type PostType = {
             id: number,
             name: string
         }
-    }[],
-    workstatus: string,
+    }[], workstatus: string,
     worktime: string,
     worksalary: string,
     bonus: string,
@@ -55,13 +54,13 @@ const Page = () => {
     const workstt = searchParam.get("wstt") || ""
     const license = searchParam.get("license") || ""
     const workplace = searchParam.get("workplace") || ""
+    const tag = searchParam.get("tag") || ""
 
     const [_posts, set_posts] = useState<PostType[]>([])
 
     useEffect(() => {
-        const getPost = async (location: string, worktype: string, workstatus: string, license: string, workplace: string) => {
-            const result = await ApiItem({ archive: "post", location, worktype, workstatus, license, workplace })
-            console.log(result)
+        const getPost = async (location: string, worktype: string, workstatus: string, license: string, workplace: string,) => {
+            const result = await ApiItem({ archive: "post", location, worktype, workstatus, license, workplace, tag, startDate: "1", endDate: "1" })
             if (result.success) {
                 set_posts(current => [...current, ...result.data].filter((item, index, self) => index === self.findIndex((i) => i.id === item.id)))
             }
@@ -73,14 +72,14 @@ const Page = () => {
         });
 
 
-    }, [license, location, workplace, workstt, worktype])
+    }, [license, location, tag, workplace, workstt, worktype])
 
     const toPage = useRouter()
+    console.log(_posts)
     return (
 
-        <div className='bg-search-bg p-10'>
+        <div className='bg-search-bg p-4 md:p-8 lg:p-10'>
             <SearchTool />
-
             <div className='mx-auto mb-4 max-w-(--xl) text-white'>
                 <h2 className='text-2xl font-bold'>Job Information</h2>
                 <div className="h-1"></div>
@@ -116,8 +115,8 @@ const Page = () => {
                                 </div>
                                 <div className="relative w-full md:w-1/2 sm:block aspect-square rounded overflow-hidden">
                                     {item.workplace?.image?.name ?
-                                        <Image src={process.env.FTP_URL + "img/career/" + item.workplace?.image?.name} fill style={{ objectFit: "cover" }} alt="home" /> :
-                                        <Image src={"/img/home.jpg"} fill style={{ objectFit: "cover" }} alt="home" />}
+                                        <Image src={process.env.ftp_url + item.workplace?.image?.name} fill style={{ objectFit: "cover" }} alt="home" /> :
+                                        <Image src={process.env.ftp_url + "2025.06.20_05-29-00_home.webp"} fill style={{ objectFit: "cover" }} alt="home" />}
                                 </div>
 
                             </div>
@@ -125,11 +124,12 @@ const Page = () => {
                             <div className="h-12"></div>
                         </div>
                     ) :
-                    <div className='h-60'>
-                        <h2 className='text-center'>結果がありません。</h2>
+                    <div className='h-40'>
+                        <h2 style={{ textAlign: "center" }}>結果がありません。</h2>
                     </div>}
             </div>
         </div>
+
     )
 }
 

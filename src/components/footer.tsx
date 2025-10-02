@@ -26,6 +26,8 @@ const Footer = () => {
                     <h4 className='font-bold text-xl cursor-pointer hover:text-sky-600' onClick={() => toPage.push("/contact")}>お問い合わせ</h4>
                 </div>
             </div>
+            <div className='text-center text-slate-900 opacity-50 text-xs font-bold'>手話研修センター<br></br>
+                管理：株式会社 アステム</div>
             <div className="fixed w-[125px] aspect-square bottom-1 right-1 rounded-[50%] backdrop-brightness-75 flex flex-col justify-center text-center font-bold text-white text-xl">
 
                 <a href="#">トップ<br></br>へ</a>

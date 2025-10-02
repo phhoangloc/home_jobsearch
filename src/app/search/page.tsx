@@ -60,7 +60,7 @@ const Page = () => {
 
     useEffect(() => {
         const getPost = async (location: string, worktype: string, workstatus: string, license: string, workplace: string) => {
-            const result = await ApiItem({ archive: "post", location, worktype, workstatus, license, workplace, tag })
+            const result = await ApiItem({ archive: "post", location, worktype, workstatus, license, workplace, tag, startDate: "1", endDate: "1" })
             if (result.success) {
                 set_posts(current => [...current, ...result.data].filter((item, index, self) => index === self.findIndex((i) => i.id === item.id)))
             }

@@ -61,7 +61,7 @@ export default function Home() {
   }, [])
   useEffect(() => {
     const getPost = async () => {
-      const result = await ApiItem({ archive: "post", limit: 4 })
+      const result = await ApiItem({ archive: "post", limit: 4, startDate: "1", endDate: "1" })
       if (result.success) {
         const posts = result.data
         set_post(posts)
@@ -289,6 +289,9 @@ export default function Home() {
           <div className="h-12"></div>
           <div className="contact grid max-w-(--sm) mx-auto bg-white py-10 p-4 md:p-8 lg:p-12 rounded shadow">
             <h1 className="font-bold text-2xl text-center text-titleTXT">お問い合わせ</h1>
+            <div className="h-2"></div>
+            <div className='text-center text-titleTXT opacity-75'>このお問い合わせは手話研修センターに送信されます。</div>
+            <div className="h-4"></div>
             <div>名称</div>
             <input className="h-12 w-full border rounded border-slate-300" onChange={(e) => set_name(e.currentTarget.value)} value={_name} />
             <div className="h-4"></div>
