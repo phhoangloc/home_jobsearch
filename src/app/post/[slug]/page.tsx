@@ -82,7 +82,7 @@ const Page = () => {
                 </div>
                 <h2 className='text-center m-auto font-bold text-titleTXT mt-20 text-xl'><span>{_post?.contenttitle}</span><br></br>{_post?.title}</h2>
                 <div className="w-full max-w-(--sm) m-auto" >
-                    <div className='flex flex-wrap gap-2 my-2'>
+                    <div className='flex flex-wrap gap-2 my-2 justify-center'>
                         {_post?.tag.map(t => t.tag).map((tag, index) => <div className='text-sm py-1 px-4 rounded-2xl bg-blueTXT/15' key={index}>{tag.name}</div>)}
                     </div>
                     .h-6

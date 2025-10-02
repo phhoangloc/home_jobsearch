@@ -147,7 +147,8 @@ export default function Home() {
                 <Image src={process.env.ftp_url + p.image.name} fill className="object-cover" alt="post-cover" />
               </div>
               <div className="h-4"></div>
-              <div className="h-[100px] overflow-hidden leading-5 text-sm" dangerouslySetInnerHTML={{ __html: p.content.split("。")[0] + "。。。" }}></div>
+              <div className="font-bold text-titleTXT line-clamp-2 h-12">{p.title}</div>
+              {/* <div className="h-[100px] overflow-hidden leading-5 text-sm" dangerouslySetInnerHTML={{ __html: p.content.split("。")[0] + "。。。" }}></div> */}
               <div className='w-5/6 h-8 mx-auto mt-4 bg-sky-900 text-white flex flex-col justify-center text-center font-bold rounded-2xl shadow cursor-pointer' onClick={() => toPage.push("/post/" + p.slug)}>詳しく見る</div>
 
             </div>)}
